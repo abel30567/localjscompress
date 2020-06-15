@@ -46,7 +46,7 @@ let len = Object.keys(data).length;
 // console.log(len);
 
 for (let key in data) {
-  if (data[key].width > 600 && data[key].extension === '.png' && !data[key].special) {    
+  if (data[key].width > constants.IMAGE_WIDTH && data[key].extension === '.png' && !data[key].special) {    
     // resize with jimp compress with imagemin
     console.log('+++++++++++++++++++++++++');
     console.log('+++++++++++++++++++++++++');
@@ -54,15 +54,15 @@ for (let key in data) {
     Jimp.read(data[key].filepath, (err, lenna) => {
       if (err) throw err;
       lenna
-        .resize(600, Jimp.AUTO) // resize
-        // .quality(60) // set JPEG quality
+        .resize(constants.IMAGE_WIDTH, Jimp.AUTO) // resize
+        // .quality(constants.JIMP_QUALITY) // set JPEG quality
         .writeAsync(data[key].destination)
         .then(async () => {
           await compress(data[key].destination, data[key].optimal);
         }) // save; // save
     });
   }
-  if (data[key].width > 600 && data[key].extension === '.png' && data[key].special) {
+  if (data[key].width > constants.IMAGE_WIDTH && data[key].extension === '.png' && data[key].special) {
     console.log('+++++++++++++++++++++++++');
     console.log('+++++++++++++++++++++++++');
     console.log('Processing through Just JIMP', data[key].filename);
@@ -70,13 +70,13 @@ for (let key in data) {
     Jimp.read(data[key].filepath, (err, lenna) => {
       if (err) throw err;
       lenna
-        .resize(600, Jimp.AUTO) // resize
-        .quality(60) // set JPEG quality
+        .resize(constants.IMAGE_WIDTH, Jimp.AUTO) // resize
+        .quality(constants.JIMP_QUALITY) // set JPEG quality
         .write(data[key].optimal);
     });
   }    
 
-  if (data[key].width > 600 && data[key].extension !== '.png') {
+  if (data[key].width > constants.IMAGE_WIDTH && data[key].extension !== '.png') {
     console.log('+++++++++++++++++++++++++');
     console.log('+++++++++++++++++++++++++');
     console.log('Processing through Just JIMP', data[key].filename);
@@ -84,26 +84,26 @@ for (let key in data) {
     Jimp.read(data[key].filepath, (err, lenna) => {
       if (err) throw err;
       lenna
-        .resize(600, Jimp.AUTO) // resize
-        .quality(60) // set JPEG quality
+        .resize(constants.IMAGE_WIDTH, Jimp.AUTO) // resize
+        .quality(constants.JIMP_QUALITY) // set JPEG quality
         .write(data[key].optimal);
     });
   } 
-  if (data[key].width <= 600 && !data[key].special) {
+  if (data[key].width <= constants.IMAGE_WIDTH && !data[key].special) {
     console.log('+++++++++++++++++++++++++');
     console.log('+++++++++++++++++++++++++');
     console.log('Processing through Just IMAGEMIN', data[key].filename);
     // compress with imagemin
     compress(data[key].filepath, data[key].optimal);
   }
-  if (data[key].width <= 600 && data[key].special) {
+  if (data[key].width <= constants.IMAGE_WIDTH && data[key].special) {
     console.log('+++++++++++++++++++++++++');
     console.log('+++++++++++++++++++++++++');
     console.log('Processing through Just JIMP', data[key].filename);
     Jimp.read(data[key].filepath, (err, lenna) => {
       if (err) throw err;
       lenna        
-        .quality(60) // set JPEG quality
+        .quality(constants.JIMP_QUALITY) // set JPEG quality
         .write(data[key].optimal);
     });
   }
@@ -113,7 +113,7 @@ function JimpCompress(filepath, destination) {
   Jimp.read(filepath, (err, lenna) => {
     if (err) throw err;
     lenna    
-      .quality(60) // set JPEG quality
+      .quality(constants.JIMP_QUALITY) // set JPEG quality
       .write(destination);
   });
 }
@@ -152,7 +152,7 @@ async function compress(filepath, altDest, min = 0.6, max = 0.8) {
 // Jimp.read('shika1.png', (err, lenna) => {
 //   if (err) throw err;
 //   lenna
-//     .resize(600, Jimp.AUTO) // resize
-//     .quality(60) // set JPEG quality
+//     .resize(constants.IMAGE_WIDTH, Jimp.AUTO) // resize
+//     .quality(constants.JIMP_QUALITY) // set JPEG quality
 //     .write('jimpTest.png'); // save
 // });
