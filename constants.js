@@ -1,7 +1,7 @@
 module.exports = {
-  ROOT: '/Users/claudioatilano/Desktop/RootNaruto/narutoAppTools/ebayConversion/superscioli_orig',
-  TEMP: './jimp',
-  OUTPUT: '/Users/claudioatilano/Desktop/RootNaruto/narutoAppTools/ebayConversion/superscioli',
+  ROOT: '../PATH_TO_SOURCE_TO_COMPRESS',
+  TEMP: './TEMPORARY_DIRECTORY',
+  OUTPUT: '../DIRECTORY_TO_WRITE_COMPRESSED_IMAGES_TO',
   RESIZE_IMAGE_WIDTH: 600,
   JIMP_QUALITY: 70,
   MAX_IMAGE_SIZE: 350000, // IN BYTES 350 KB

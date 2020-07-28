@@ -174,7 +174,6 @@ async function compress(filepath, altDest, min = 0.6, max = 0.8) {
     console.log('=================================');
     console.log('=================================');
     console.log('Failed in processing image', filepath);
-    // console.log(e);
     if (e.exitCode === 99) {
       console.log(Date.now(), 'Reprocessing image with JIMP instead', filepath);
       JimpCompress(filepath, altDest);
