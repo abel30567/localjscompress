@@ -1,6 +1,6 @@
 # localjscompress
 
-This application is meant to be used to compress your images and reduce them in size based on whatever application needs to serve them.
+This application is meant to be used to compress your images and reduce them in size based on whatever application needs to serve them. For background on how this was made checkout this <a href="https://medium.com/@claudio_69833/how-i-compressed-images-with-jimp-and-imagemin-with-node-js-ff863a4c46ac?sk=c323e5ce96e264c662251b8012451940">Medium Post</a>.
 
 ## Getting Started
 

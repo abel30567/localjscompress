@@ -145,13 +145,10 @@ function JimpResizeCompress(filepath, resize,destination) {
 
 
 function JimpCompress(filepath, destination) {
-  console.log('+++++++++++++++++++++++++');
-  console.log('+++++++++++++++++++++++++');
-  console.log('Processing through Just JIMP', filepath);
   Jimp.read(filepath, (err, lenna) => {
     if (err) throw err;
     lenna    
-      .quality(constants.JIMP_QUALITY) // set JPEG quality
+      .quality(constants.JIMP_QUALITY) // set Image quality
       .write(destination);
   });
 }
